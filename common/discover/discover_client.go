@@ -2,18 +2,18 @@
  * @Description: Add file description
  * @Author: lilihx@github.com
  * @Date: 2022-03-03 15:55:52
- * @LastEditTime: 2022-03-07 19:15:07
+ * @LastEditTime: 2022-03-08 15:26:39
  * @LastEditors: lilihx@github.com
  */
 package discover
 
 import (
-	"fmt"
 	"strconv"
 	"sync"
 
 	"github.com/go-kit/kit/sd/consul"
 	"github.com/hashicorp/consul/api"
+	"github.com/lilihx/chatRoom/common/log"
 )
 
 type DiscoveryClient interface {
@@ -56,7 +56,7 @@ func NewKitDiscoverClient(consulHost string, consulPort int) (DiscoveryClient, e
 	consulConfig.Address = consulHost + ":" + strconv.Itoa(consulPort)
 	apiClient, err := api.NewClient(consulConfig)
 	if err != nil {
-		fmt.Println("init consul err" + err.Error())
+		log.Error(("init consul err" + err.Error()))
 		return nil, err
 	}
 	client := consul.NewClient(apiClient)
@@ -83,10 +83,10 @@ func (consulClient *KitDiscoverClient) Register(serviceName, instanceId, healthC
 	}
 	err := consulClient.client.Register(serviceRegistration)
 	if err != nil {
-		fmt.Println("Register service error")
+		log.Error("Register service error")
 		return false
 	}
-	fmt.Println("Register service success")
+	log.Info("Register service success")
 	return true
 }
 
@@ -96,10 +96,10 @@ func (consulClient *KitDiscoverClient) DeRegister(instanceId string) bool {
 	}
 	err := consulClient.client.Deregister(serviceRegistration)
 	if err != nil {
-		fmt.Println("Deregister service error")
+		log.Error("Deregister service error")
 		return false
 	}
-	fmt.Println("Deregister service success")
+	log.Info("Deregister service success")
 	return true
 }
 
@@ -116,7 +116,7 @@ func (consulClient *KitDiscoverClient) DiscoverServices(serviceName string) []in
 	}
 	entries, _, err := consulClient.client.Service(serviceName, "", false, nil)
 	if err != nil {
-		fmt.Println("Discover error")
+		log.Error("Discover error")
 		return nil
 	}
 	instances := make([]interface{}, len(entries))

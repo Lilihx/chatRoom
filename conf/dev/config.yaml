@@ -1,0 +1,12 @@
+# Config File
+Consul:
+  host: 127.0.0.1
+  port: 8500
+WServer:
+  host: 127.0.0.1
+  port: 7000
+  Check:
+    interval: 1500
+    deregisterCriticalServiceAfter: 6000
+Log:
+  level: 6
