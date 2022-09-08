@@ -1,3 +1,10 @@
+/*
+ * @Description: Add file description
+ * @Author: lilihx@github.com
+ * @Date: 2022-03-04 16:43:48
+ * @LastEditTime: 2022-03-08 15:28:04
+ * @LastEditors: lilihx@github.com
+ */
 package wss
 
 import (
