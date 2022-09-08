@@ -1,10 +1,3 @@
-/*
- * @Description: Add file description
- * @Author: lilihx@github.com
- * @Date: 2022-03-08 13:29:53
- * @LastEditTime: 2022-03-08 15:18:59
- * @LastEditors: lilihx@github.com
- */
 package log
 
 import (

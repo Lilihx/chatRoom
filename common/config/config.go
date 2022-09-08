@@ -1,10 +1,3 @@
-/*
- * @Description: Config
- * @Author: lilihx@github.com
- * @Date: 2022-03-08 13:30:13
- * @LastEditTime: 2022-03-08 15:09:13
- * @LastEditors: lilihx@github.com
- */
 package config
 
 import (
@@ -33,6 +26,20 @@ type config struct {
 		Check struct {
 			Interval                       int `yaml:"interval"`
 			DeregisterCriticalServiceAfter int `yaml:"deregisterCriticalServiceAfter"`
+		}
+	}
+
+	AccountServer struct {
+		Addr string `yaml:"addr"`
+		Host string `yaml:"host"`
+		Port int    `yaml:"port"`
+	}
+
+	Github struct {
+		Oauth struct {
+			ClientId     string `yaml:"clientId"`
+			ClientSecret string `yaml:"clientSecret"`
+			RedirectUrl  string `yaml:"RedirectUrl"`
 		}
 	}
 
@@ -68,7 +75,9 @@ func init() {
 		if err != nil {
 			panic(err)
 		}
-		viper.Unmarshal(&Config)
+		if err = viper.Unmarshal(&Config); err != nil {
+			panic(err)
+		}
 	})
 
 }
