@@ -7,9 +7,8 @@
  */
 package main
 
-import "github.com/lilihx/chatRoom/wss"
+import "github.com/lilihx/chatRoom/cmd"
 
 func main() {
-	ser := wss.WServer{}
-	ser.InitWebSocket()
+	cmd.Execute()
 }

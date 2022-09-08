@@ -8,5 +8,23 @@ WServer:
   Check:
     interval: 1500
     deregisterCriticalServiceAfter: 6000
+AccountServer:
+  addr: 127.0.0.1:7010
+  host: 127.0.0.1
+  port: 7010
+Github:
+  oauth:
+    clientId: "e7da22e872aec8dd0941"
+    clientSecret: "c24b6970035787cbc81695554dcd83fcbc3d463c"
+    redirectUrl: "http://127.0.0.1:7010/oauth/redirect"
+MySQL:
+  host: 127.0.0.1
+  port: 3306
+  user: root
+  passwd: 123456
+  db: chatRoom
+Redis:
+  host: 127.0.0.1
+  port: 6379
 Log:
   level: 6
